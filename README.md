@@ -1,5 +1,59 @@
-# ejercicio-tecnico-api-star-wars
-Ejercicio tecnico de extension de API Star Wars
+## Ejercicio tecnico de extension de API Star Wars
+
+### Pasos para instalacion
+
+1️⃣
+Utilizar Xampp, Apacha->Start, MySQL->Start
+
+2️⃣
+Navegar hasta donde tengan instalado xampp y luego acceder a la ruta xampp/htdocs para clonar el repositorio.
+git clone https://github.com/cdoller/ejercicio-tecnico-api-star-wars.git
+cd ejercicio-tecnico-api-star-wars
+
+3️⃣
+Instalar las dependencias del proyecto
+composer install
+
+4️⃣
+Clonar el archivo .env.example, colocarle de nombre .env y dentro colocar todas las variables de entorno de nuestro proyecto.
+
+5️⃣
+Creamos la base de datos para nuestro proyecto y colocamos sus datos en el archivo .env
+
+6️⃣
+Generar una APP_KEY
+php artisan key:generate
+
+7️⃣
+Ejecutar migraciones y seeders para nuestras tablas de base de datos
+php artisan migrate --seed
+
+8️⃣
+Clonar base de datos creada y a la nueva colocarle un nombre diferente. Esta base de datos va a ser para testing.
+Colocar el nuevo nombre de la base de datos en el archivo "phpunit.xml" en <server name="DB_DATABASE" value="nombreBaseDatosPrueba"/>
+
+9️⃣
+En una terminal, navegar hasta donde hayamos instalado el proyecto y ejecutar:
+php artisan serve
+De esta manera generaremos un servidor local propio de Laravel.
+
+TEST:
+Para ejecutar los test se debe tener creada y configurada la base de datos para testing, luego ejecutar:
+php artisan test
+
+DOCUMENTACION DE LA API:
+Realizada en Swagger, deberan correr el comando php artisan serve primero y luego acceder a :
+http://127.0.0.1:8000/api/documentation/
+
+
+
+--------------------------------------------------------------------------------------------
+
+
+
+
+
+
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
