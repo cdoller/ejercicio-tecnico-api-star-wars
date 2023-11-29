@@ -691,6 +691,204 @@
                 }
             }
         },
+        "/api/v1/starships/quantityInventory/reset": {
+            "post": {
+                "tags": [
+                    "Inventory"
+                ],
+                "summary": "Reset quantity to 0 of a specific Starship. \nA Starship resource is a single transport craft that has hyperdrive capability.",
+                "operationId": "63534767aa88239b9912a15397f068ca",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The ID of a specific vehicle",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "movement": {
+                                            "description": "Movement actual",
+                                            "type": "integer",
+                                            "example": "0"
+                                        },
+                                        "current_quantity": {
+                                            "description": "Current quantity that was just set",
+                                            "type": "integer",
+                                            "example": "0"
+                                        },
+                                        "ship_url": {
+                                            "description": "Unique URL from Ship",
+                                            "type": "string",
+                                            "example": "https://swapi.dev/api/starships/2/"
+                                        },
+                                        "updated_at": {
+                                            "description": "the ISO 8601 date format of the time that this resource was edited",
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "description": "the ISO 8601 date format of the time that this resource was created",
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "description": "intern id that represents an unique register",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "detail": {
+                                            "description": "Not matches results for id request param",
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Message that explain the error in request",
+                                            "type": "string",
+                                            "example": "Error in validation of parameters"
+                                        },
+                                        "errors": {
+                                            "description": "List of errors",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/vehicles/quantityInventory/reset": {
+            "post": {
+                "tags": [
+                    "Inventory"
+                ],
+                "summary": "Reset quantity to 0 of a specific Vehicle. \nA Vehicle resource is a single transport craft that does not have hyperdrive capability.",
+                "operationId": "51d0f5579f5ec2b30b92743e06ea6e03",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The ID of a specific vehicle",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "movement": {
+                                            "description": "Movement actual",
+                                            "type": "integer",
+                                            "example": "0"
+                                        },
+                                        "current_quantity": {
+                                            "description": "Current quantity that was just set",
+                                            "type": "integer",
+                                            "example": "0"
+                                        },
+                                        "ship_url": {
+                                            "description": "Unique URL from Ship",
+                                            "type": "string",
+                                            "example": "https://swapi.dev/api/vehicles/16/"
+                                        },
+                                        "updated_at": {
+                                            "description": "the ISO 8601 date format of the time that this resource was edited",
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "description": "the ISO 8601 date format of the time that this resource was created",
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "description": "intern id that represents an unique register",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "detail": {
+                                            "description": "Not matches results for id request param",
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Message that explain the error in request",
+                                            "type": "string",
+                                            "example": "Error in validation of parameters"
+                                        },
+                                        "errors": {
+                                            "description": "List of errors",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/vehicles": {
             "get": {
                 "tags": [

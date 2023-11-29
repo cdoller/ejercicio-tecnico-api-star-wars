@@ -456,9 +456,105 @@ class InventoryController extends Controller
         return $this->subtractActualQuantity($request, $resource);
     }
 
+    /**
+     * Reset quantity to 0 of a specific Starship. 
+     * A Starship resource is a single transport craft that has hyperdrive capability.
+     * @OA\Post (
+     *     path="/api/v1/starships/quantityInventory/reset",
+     *     tags={"Inventory"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="query",
+     *         required=true,
+     *         description="The ID of a specific vehicle",
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Created",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="movement", type="integer", description="Movement actual", example="0"),
+     *             @OA\Property(property="current_quantity", type="integer", description="Current quantity that was just set", example="0"),
+     *             @OA\Property(property="ship_url", type="string", description="Unique URL from Ship", example="https://swapi.dev/api/starships/2/"),
+     *             @OA\Property(property="updated_at", type="string", description="the ISO 8601 date format of the time that this resource was edited"),
+     *             @OA\Property(property="created_at", type="string", description="the ISO 8601 date format of the time that this resource was created"),
+     *             @OA\Property(property="id", type="integer", description="intern id that represents an unique register")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Not Found",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="detail", type="string", description="Not matches results for id request param", example="Not found")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Unprocessable Content",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="message", type="string", description="Message that explain the error in request", example="Error in validation of parameters"),
+     *             @OA\Property(property="errors", type="object", description="List of errors")
+     *         )
+     *     )
+     * )
+     */
     public function starshipResetQuantity(IdRequest $request)
     {
         $resource = 'starships';
+        return $this->resetQuantity($request, $resource);
+    }
+
+    /**
+     * Reset quantity to 0 of a specific Vehicle. 
+     * A Vehicle resource is a single transport craft that does not have hyperdrive capability.
+     * @OA\Post (
+     *     path="/api/v1/vehicles/quantityInventory/reset",
+     *     tags={"Inventory"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="query",
+     *         required=true,
+     *         description="The ID of a specific vehicle",
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Created",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="movement", type="integer", description="Movement actual", example="0"),
+     *             @OA\Property(property="current_quantity", type="integer", description="Current quantity that was just set", example="0"),
+     *             @OA\Property(property="ship_url", type="string", description="Unique URL from Ship", example="https://swapi.dev/api/vehicles/16/"),
+     *             @OA\Property(property="updated_at", type="string", description="the ISO 8601 date format of the time that this resource was edited"),
+     *             @OA\Property(property="created_at", type="string", description="the ISO 8601 date format of the time that this resource was created"),
+     *             @OA\Property(property="id", type="integer", description="intern id that represents an unique register")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Not Found",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="detail", type="string", description="Not matches results for id request param", example="Not found")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Unprocessable Content",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="message", type="string", description="Message that explain the error in request", example="Error in validation of parameters"),
+     *             @OA\Property(property="errors", type="object", description="List of errors")
+     *         )
+     *     )
+     * )
+     */
+    public function vehicleResetQuantity(IdRequest $request)
+    {
+        $resource = 'vehicles';
         return $this->resetQuantity($request, $resource);
     }
 
@@ -556,7 +652,7 @@ class InventoryController extends Controller
 
             return response()->json([
                 'data' => $newInventory
-            ], 200);
+            ], 201);
         }catch(Exception $e){
             return response()->json([
                 'detail' => 'Not found',

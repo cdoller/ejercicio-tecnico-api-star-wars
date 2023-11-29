@@ -18,3 +18,4 @@ Route::get( '/v1/vehicles/{id}', [ShipController::class, 'getSpecificVehicle']);
 Route::post('/v1/vehicles/quantityInventory/set', [InventoryController::class, 'vehicleSetQuantity']);
 Route::post('/v1/vehicles/quantityInventory/add', [InventoryController::class, 'vehicleAddQuantity']);
 Route::post('/v1/vehicles/quantityInventory/subtract', [InventoryController::class, 'vechicleSubtractQuantity']);
+Route::post('/v1/vehicles/quantityInventory/reset', [InventoryController::class, 'vehicleResetQuantity']);
