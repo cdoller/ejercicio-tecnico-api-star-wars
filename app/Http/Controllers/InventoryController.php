@@ -562,6 +562,13 @@ class InventoryController extends Controller
     ///////////////// OTHER METHODS /////////////////
     /////////////////////////////////////////////////
 
+    /**
+     * Set a specific quantity to a ship.
+     * 
+     * @param \App\Http\Requests\Inventory\InventoryRequest
+     * @param resource from Swapi
+     * @return \Illuminate\Http\Response
+     */
     public function setActualQuantity(InventoryRequest $request, $resource)
     {
         try{
@@ -592,6 +599,13 @@ class InventoryController extends Controller
         }
     }
 
+    /**
+     * Add a specific quantity to a ship.
+     * 
+     * @param \App\Http\Requests\Inventory\InventoryRequest
+     * @param resource from Swapi
+     * @return \Illuminate\Http\Response
+     */
     public function addActualQuantity(InventoryRequest $request, $resource)
     {
         try{
@@ -623,6 +637,14 @@ class InventoryController extends Controller
         }
     }
 
+    /**
+     * Subtract a specific quantity to a ship.
+     * The result of this subtract dont be a negative number.
+     * 
+     * @param \App\Http\Requests\Inventory\InventoryRequest
+     * @param resource from Swapi
+     * @return \Illuminate\Http\Response
+     */
     public function subtractActualQuantity(InventoryRequest $request, $resource)
     {
         try{
@@ -660,6 +682,13 @@ class InventoryController extends Controller
         }
     }
 
+    /**
+     * Reset a specific quantity to 0 from a ship.
+     * 
+     * @param \App\Http\Requests\Inventory\IdRequest
+     * @param resource from Swapi
+     * @return \Illuminate\Http\Response
+     */
     public function resetQuantity(IdRequest $request, $resource)
     {
         try{
@@ -690,15 +719,26 @@ class InventoryController extends Controller
         }
     }
 
-    private function createInventory($movement, $quantity, $url)
+    /**
+     * Create a register in database.
+     * 
+     * @param movement is a quantity of movment
+     * @param currentQuantity is a result of quantity after movement
+     * @return url from the resource
+     */
+    private function createInventory($movement, $currentQuantity, $url)
     {
         return Inventory::create([
             'movement' => $movement,
-            'current_quantity' => $quantity,
+            'current_quantity' => $currentQuantity,
             'ship_url' => $url,
         ]);
     }
 
+    /**
+     * Obtain current quantity from a resource.
+     * If the resource doesnt have movements, return 0.     
+    */
     public static function getCurrentQuantity($url)
     {
         return Inventory::where('ship_url', $url)->latest()->value('current_quantity') ?? 0;

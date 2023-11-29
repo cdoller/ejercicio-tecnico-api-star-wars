@@ -456,7 +456,7 @@ class ShipController extends Controller
     /**
      * Obtains the list of ships with full data, the results are paginate. Also you can search by name or model.
      * 
-     * @param \App\Http\Requests\GetCountRequest
+     * @param \App\Http\Requests\Ship\GetCountRequest
      * @param resource name of resource
      * @return \Illuminate\Http\Response
      */
@@ -517,7 +517,7 @@ class ShipController extends Controller
     /**
      * Obtains the basic data of a ship, you can search by ID, model or name.
      * 
-     * @param \App\Http\Requests\GetCountRequest
+     * @param \App\Http\Requests\Ship\GetCountRequest
      * @param resource name of resource
      * @return \Illuminate\Http\Response
      */
@@ -567,6 +567,7 @@ class ShipController extends Controller
                         'name' => $result->name,
                         'model' => $result->model,
                         'count' => $result->count,
+                        'url' => $result->url,
                     ];
 
                     $formattedResults[] = $formattedResult;
