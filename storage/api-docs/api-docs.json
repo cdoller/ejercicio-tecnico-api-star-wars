@@ -1,0 +1,1447 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API StarWars extendida",
+        "description": "Listado de la URI's de la API Naves",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000"
+        }
+    ],
+    "paths": {
+        "/api/v1/starships/quantityInventory/set": {
+            "post": {
+                "tags": [
+                    "Inventory"
+                ],
+                "summary": "Set an inventory quantity of a specific starship. \nA Starship resource is a single transport craft that has hyperdrive capability.",
+                "operationId": "c8e4620e8a9173b0407446775ec3db78",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The ID of a specific starship",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "quantity",
+                        "in": "query",
+                        "description": "Quantity to set on inventary",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "movement": {
+                                            "description": "Movement actual",
+                                            "type": "integer",
+                                            "example": "20"
+                                        },
+                                        "current_quantity": {
+                                            "description": "Current quantity that was just set",
+                                            "type": "integer",
+                                            "example": "20"
+                                        },
+                                        "ship_url": {
+                                            "description": "Unique URL from Ship",
+                                            "type": "string",
+                                            "example": "https://swapi.dev/api/starships/2/"
+                                        },
+                                        "updated_at": {
+                                            "description": "the ISO 8601 date format of the time that this resource was edited",
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "description": "the ISO 8601 date format of the time that this resource was created",
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "description": "intern id that represents an unique register",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "detail": {
+                                            "description": "Not matches results for id request param",
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Message that explain the error in request",
+                                            "type": "string",
+                                            "example": "Error in validation of parameters"
+                                        },
+                                        "errors": {
+                                            "description": "List of errors",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/vehicles/quantityInventory/set": {
+            "post": {
+                "tags": [
+                    "Inventory"
+                ],
+                "summary": "Set an inventory quantity of a specific vehicle. \nA Vehicle resource is a single transport craft that does not have hyperdrive capability.",
+                "operationId": "3478243db860b126619230686e8d42ce",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The ID of a specific vehicle",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "quantity",
+                        "in": "query",
+                        "description": "Quantity to set on inventary",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "movement": {
+                                            "description": "Movement actual",
+                                            "type": "integer",
+                                            "example": "20"
+                                        },
+                                        "current_quantity": {
+                                            "description": "Current quantity that was just set",
+                                            "type": "integer",
+                                            "example": "20"
+                                        },
+                                        "ship_url": {
+                                            "description": "Unique URL from Ship",
+                                            "type": "string",
+                                            "example": "https://swapi.dev/api/vehicles/16/"
+                                        },
+                                        "updated_at": {
+                                            "description": "the ISO 8601 date format of the time that this resource was edited",
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "description": "the ISO 8601 date format of the time that this resource was created",
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "description": "intern id that represents an unique register",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "detail": {
+                                            "description": "Not matches results for id request param",
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Message that explain the error in request",
+                                            "type": "string",
+                                            "example": "Error in validation of parameters"
+                                        },
+                                        "errors": {
+                                            "description": "List of errors",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/vehicles/quantityInventory/add": {
+            "post": {
+                "tags": [
+                    "Inventory"
+                ],
+                "summary": "Add a quantity of a specific vehicle. \nA Vehicle resource is a single transport craft that does not have hyperdrive capability.",
+                "operationId": "8338593415063a218709bc1c7e2b67a6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The ID of a specific vehicle",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "quantity",
+                        "in": "query",
+                        "description": "Quantity to set on inventary",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "movement": {
+                                            "description": "Movement actual",
+                                            "type": "integer",
+                                            "example": "20"
+                                        },
+                                        "current_quantity": {
+                                            "description": "Current quantity that was just set",
+                                            "type": "integer",
+                                            "example": "20"
+                                        },
+                                        "ship_url": {
+                                            "description": "Unique URL from Ship",
+                                            "type": "string",
+                                            "example": "https://swapi.dev/api/vehicles/16/"
+                                        },
+                                        "updated_at": {
+                                            "description": "the ISO 8601 date format of the time that this resource was edited",
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "description": "the ISO 8601 date format of the time that this resource was created",
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "description": "intern id that represents an unique register",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "detail": {
+                                            "description": "Not matches results for id request param",
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Message that explain the error in request",
+                                            "type": "string",
+                                            "example": "Error in validation of parameters"
+                                        },
+                                        "errors": {
+                                            "description": "List of errors",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/starships/quantityInventory/add": {
+            "post": {
+                "tags": [
+                    "Inventory"
+                ],
+                "summary": "Add a quantity of a specific Starship. \nA Starship resource is a single transport craft that has hyperdrive capability.",
+                "operationId": "acaea9986e51f16145de3583b4c2d178",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The ID of a specific vehicle",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "quantity",
+                        "in": "query",
+                        "description": "Quantity to set on inventary",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "movement": {
+                                            "description": "Movement actual",
+                                            "type": "integer",
+                                            "example": "20"
+                                        },
+                                        "current_quantity": {
+                                            "description": "Current quantity that was just set",
+                                            "type": "integer",
+                                            "example": "20"
+                                        },
+                                        "ship_url": {
+                                            "description": "Unique URL from Ship",
+                                            "type": "string",
+                                            "example": "https://swapi.dev/api/vehicles/16/"
+                                        },
+                                        "updated_at": {
+                                            "description": "the ISO 8601 date format of the time that this resource was edited",
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "description": "the ISO 8601 date format of the time that this resource was created",
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "description": "intern id that represents an unique register",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "detail": {
+                                            "description": "Not matches results for id request param",
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Message that explain the error in request",
+                                            "type": "string",
+                                            "example": "Error in validation of parameters"
+                                        },
+                                        "errors": {
+                                            "description": "List of errors",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/vehicles/quantityInventory/subtract": {
+            "post": {
+                "tags": [
+                    "Inventory"
+                ],
+                "summary": "Subtract a quantity of a specific vehicle. \nA Vehicle resource is a single transport craft that does not have hyperdrive capability.",
+                "operationId": "e4a54dadcff93669e0feceb7c45071cf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The ID of a specific vehicle",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "quantity",
+                        "in": "query",
+                        "description": "Quantity to set on inventary",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "movement": {
+                                            "description": "Movement actual",
+                                            "type": "integer",
+                                            "example": "20"
+                                        },
+                                        "current_quantity": {
+                                            "description": "Current quantity that was just set",
+                                            "type": "integer",
+                                            "example": "20"
+                                        },
+                                        "ship_url": {
+                                            "description": "Unique URL from Ship",
+                                            "type": "string",
+                                            "example": "https://swapi.dev/api/vehicles/16/"
+                                        },
+                                        "updated_at": {
+                                            "description": "the ISO 8601 date format of the time that this resource was edited",
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "description": "the ISO 8601 date format of the time that this resource was created",
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "description": "intern id that represents an unique register",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "detail": {
+                                            "description": "Not matches results for id request param",
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Message that explain the error in request",
+                                            "type": "string",
+                                            "example": "Error in validation of parameters"
+                                        },
+                                        "errors": {
+                                            "description": "List of errors",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Operation not allowed: negative stock result"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/starships/quantityInventory/subtract": {
+            "post": {
+                "tags": [
+                    "Inventory"
+                ],
+                "summary": "Subtract a quantity of a specific Starship. \nA Starship resource is a single transport craft that has hyperdrive capability.",
+                "operationId": "b304dbf3f94d6d36add673f8d09c20ee",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The ID of a specific vehicle",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "quantity",
+                        "in": "query",
+                        "description": "Quantity to set on inventary",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "movement": {
+                                            "description": "Movement actual",
+                                            "type": "integer",
+                                            "example": "20"
+                                        },
+                                        "current_quantity": {
+                                            "description": "Current quantity that was just set",
+                                            "type": "integer",
+                                            "example": "20"
+                                        },
+                                        "ship_url": {
+                                            "description": "Unique URL from Ship",
+                                            "type": "string",
+                                            "example": "https://swapi.dev/api/vehicles/16/"
+                                        },
+                                        "updated_at": {
+                                            "description": "the ISO 8601 date format of the time that this resource was edited",
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "description": "the ISO 8601 date format of the time that this resource was created",
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "description": "intern id that represents an unique register",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "detail": {
+                                            "description": "Not matches results for id request param",
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Message that explain the error in request",
+                                            "type": "string",
+                                            "example": "Error in validation of parameters"
+                                        },
+                                        "errors": {
+                                            "description": "List of errors",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Operation not allowed: negative stock result"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/vehicles": {
+            "get": {
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Returns the Vehicles with the added 'count' property. Returns them in a paginated manner.",
+                "description": "A Vehicle resource is a single transport craft that does not have hyperdrive capability.",
+                "operationId": "46891c5bed9e232d7161b178faa6ce20",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search by name or model",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Number of page for results in pagination",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "count": {
+                                            "description": "Total quantity of vehicles",
+                                            "type": "integer",
+                                            "example": "30"
+                                        },
+                                        "next": {
+                                            "description": "Next url page",
+                                            "type": "string",
+                                            "example": "https://swapi.dev/api/vehicles/?page=2"
+                                        },
+                                        "previous": {
+                                            "description": "Previous url page",
+                                            "type": "string",
+                                            "example": "https://swapi.dev/api/vehicles/?page=1"
+                                        },
+                                        "results": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "name": {
+                                                        "description": "The name of this vehicle. The common name, such as Sand Crawler or Speeder bike",
+                                                        "type": "string"
+                                                    },
+                                                    "model": {
+                                                        "description": "The model or official name of this vehicle. Such as All-Terrain Attack Transport",
+                                                        "type": "string"
+                                                    },
+                                                    "vehicle_class": {
+                                                        "description": "The class of this vehicle, such as Wheeled or Repulsorcraft",
+                                                        "type": "string"
+                                                    },
+                                                    "manufacturer": {
+                                                        "description": "The manufacturer of this vehicle. Comma separated if more than one",
+                                                        "type": "string"
+                                                    },
+                                                    "length": {
+                                                        "description": "The length of this vehicle in meters",
+                                                        "type": "string"
+                                                    },
+                                                    "cost_in_credits": {
+                                                        "description": "The cost of this vehicle new, in Galactic Credits",
+                                                        "type": "string"
+                                                    },
+                                                    "crew": {
+                                                        "description": "The number of personnel needed to run or pilot this vehicle",
+                                                        "type": "string"
+                                                    },
+                                                    "passengers": {
+                                                        "description": "The number of non-essential people this vehicle can transport",
+                                                        "type": "string"
+                                                    },
+                                                    "max_atmosphering_speed": {
+                                                        "description": "The maximum speed of this vehicle in the atmosphere",
+                                                        "type": "string"
+                                                    },
+                                                    "cargo_capacity": {
+                                                        "description": "The maximum number of kilograms that this vehicle can transport",
+                                                        "type": "string"
+                                                    },
+                                                    "consumables": {
+                                                        "description": "The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply",
+                                                        "type": "string"
+                                                    },
+                                                    "films": {
+                                                        "description": "An array of Film URL Resources that this vehicle has appeared in",
+                                                        "type": "array",
+                                                        "items": {
+                                                            "description": "Films URLs Resources",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "pilots": {
+                                                        "description": "An array of People URL Resources that this vehicle has been piloted by",
+                                                        "type": "array",
+                                                        "items": {
+                                                            "description": "People URLs Resources",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "url": {
+                                                        "description": "the hypermedia URL of this resource",
+                                                        "type": "string"
+                                                    },
+                                                    "created": {
+                                                        "description": "the ISO 8601 date format of the time that this resource was created",
+                                                        "type": "string"
+                                                    },
+                                                    "edited": {
+                                                        "description": "the ISO 8601 date format of the time that this resource was edited",
+                                                        "type": "string"
+                                                    },
+                                                    "count": {
+                                                        "description": "Specific quantity of this vehicle",
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "detail": {
+                                            "description": "Not matches results for request params",
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/starships": {
+            "get": {
+                "tags": [
+                    "Starships"
+                ],
+                "summary": "Returns the Starships with the added 'count' property. Returns them in a paginated manner.",
+                "description": "A Starship resource is a single transport craft that has hyperdrive capability.",
+                "operationId": "713f3a3ec8b471ceb004704c6f88550e",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search by name or model",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Number of page for results in pagination",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "count": {
+                                            "description": "Total Quantity of Starships",
+                                            "type": "integer",
+                                            "example": "30"
+                                        },
+                                        "next": {
+                                            "description": "Next page url",
+                                            "type": "string",
+                                            "example": "https://swapi.dev/api/vehicles/?page=2"
+                                        },
+                                        "previous": {
+                                            "description": "Previous page url",
+                                            "type": "string",
+                                            "example": "https://swapi.dev/api/vehicles/?page=1"
+                                        },
+                                        "results": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "name": {
+                                                        "description": "The name of this starship. The common name, such as Death Star",
+                                                        "type": "string"
+                                                    },
+                                                    "model": {
+                                                        "description": "The model or official name of this starship. Such as T-65 X-wing or DS-1 Orbital Battle Station",
+                                                        "type": "string"
+                                                    },
+                                                    "starship_class": {
+                                                        "description": "The class of this starship, such as Starfighter or Deep Space Mobile Battlestation",
+                                                        "type": "string"
+                                                    },
+                                                    "manufacturer": {
+                                                        "description": "The manufacturer of this starship. Comma separated if more than one",
+                                                        "type": "string"
+                                                    },
+                                                    "cost_in_credits": {
+                                                        "description": "The cost of this starship new, in galactic credits",
+                                                        "type": "string"
+                                                    },
+                                                    "length": {
+                                                        "description": "The length of this starship in meters",
+                                                        "type": "string"
+                                                    },
+                                                    "crew": {
+                                                        "description": "The number of personnel needed to run or pilot this starship",
+                                                        "type": "string"
+                                                    },
+                                                    "passengers": {
+                                                        "description": "The number of non-essential people this starship can transport",
+                                                        "type": "string"
+                                                    },
+                                                    "max_atmosphering_speed": {
+                                                        "description": "The maximum speed of this starship in the atmosphere. N/A if this starship is incapable of atmospheric flight",
+                                                        "type": "string"
+                                                    },
+                                                    "hyperdrive_rating": {
+                                                        "description": "The class of this starships hyperdrive",
+                                                        "type": "string"
+                                                    },
+                                                    "MGLT": {
+                                                        "description": "The Maximum number of Megalights this starship can travel in a standard hour. A Megalight is a standard unit of distance and has never been defined before within the Star Wars universe. This figure is only really useful for measuring the difference in speed of starships. We can assume it is similar to AU, the distance between our Sun (Sol) and Earth",
+                                                        "type": "string"
+                                                    },
+                                                    "cargo_capacity": {
+                                                        "description": "The maximum number of kilograms that this starship can transport",
+                                                        "type": "string"
+                                                    },
+                                                    "consumables": {
+                                                        "description": "The maximum length of time that this starship can provide consumables for its entire crew without having to resupply",
+                                                        "type": "string"
+                                                    },
+                                                    "films": {
+                                                        "description": "An array of Film URL Resources that this vehicle has appeared in",
+                                                        "type": "array",
+                                                        "items": {
+                                                            "description": "Films URLs Resources",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "pilots": {
+                                                        "description": "An array of People URL Resources that this vehicle has been piloted by",
+                                                        "type": "array",
+                                                        "items": {
+                                                            "description": "People URLs Resources",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "url": {
+                                                        "description": "the hypermedia URL of this resource",
+                                                        "type": "string"
+                                                    },
+                                                    "created": {
+                                                        "description": "the ISO 8601 date format of the time that this resource was created",
+                                                        "type": "string"
+                                                    },
+                                                    "edited": {
+                                                        "description": "the ISO 8601 date format of the time that this resource was edited",
+                                                        "type": "string"
+                                                    },
+                                                    "count": {
+                                                        "description": "Specific quantity of this vehicle",
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "detail": {
+                                            "description": "Not matches results for request params",
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/vehicles/{id}": {
+            "get": {
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Returns a specific Vehicle using his ID, with the added 'count' property.",
+                "description": "A Vehicle resource is a single transport craft that does not have hyperdrive capability.",
+                "operationId": "36849a7783309894400de9bb662155ab",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "description": "The name of this vehicle. The common name, such as Sand Crawler or Speeder bike",
+                                            "type": "string"
+                                        },
+                                        "model": {
+                                            "description": "The model or official name of this vehicle. Such as All-Terrain Attack Transport",
+                                            "type": "string"
+                                        },
+                                        "vehicle_class": {
+                                            "description": "The class of this vehicle, such as Wheeled or Repulsorcraft",
+                                            "type": "string"
+                                        },
+                                        "manufacturer": {
+                                            "description": "The manufacturer of this vehicle. Comma separated if more than one",
+                                            "type": "string"
+                                        },
+                                        "length": {
+                                            "description": "The length of this vehicle in meters",
+                                            "type": "string"
+                                        },
+                                        "cost_in_credits": {
+                                            "description": "The cost of this vehicle new, in Galactic Credits",
+                                            "type": "string"
+                                        },
+                                        "crew": {
+                                            "description": "The number of personnel needed to run or pilot this vehicle",
+                                            "type": "string"
+                                        },
+                                        "passengers": {
+                                            "description": "The number of non-essential people this vehicle can transport",
+                                            "type": "string"
+                                        },
+                                        "max_atmosphering_speed": {
+                                            "description": "The maximum speed of this vehicle in the atmosphere",
+                                            "type": "string"
+                                        },
+                                        "cargo_capacity": {
+                                            "description": "The maximum number of kilograms that this vehicle can transport",
+                                            "type": "string"
+                                        },
+                                        "consumables": {
+                                            "description": "The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply",
+                                            "type": "string"
+                                        },
+                                        "films": {
+                                            "description": "An array of Film URL Resources that this vehicle has appeared in",
+                                            "type": "array",
+                                            "items": {
+                                                "description": "Films URLs Resources",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "pilots": {
+                                            "description": "An array of People URL Resources that this vehicle has been piloted by",
+                                            "type": "array",
+                                            "items": {
+                                                "description": "People URLs Resources",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "url": {
+                                            "description": "the hypermedia URL of this resource",
+                                            "type": "string"
+                                        },
+                                        "created": {
+                                            "description": "the ISO 8601 date format of the time that this resource was created",
+                                            "type": "string"
+                                        },
+                                        "edited": {
+                                            "description": "the ISO 8601 date format of the time that this resource was edited",
+                                            "type": "string"
+                                        },
+                                        "count": {
+                                            "description": "Specific quantity of this vehicle",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "detail": {
+                                            "description": "Not match result for {id}",
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/starships/{id}": {
+            "get": {
+                "tags": [
+                    "Starships"
+                ],
+                "summary": "Returns a specific Starship using his ID, with the added 'count' property.",
+                "description": "A Starship resource is a single transport craft that has hyperdrive capability.",
+                "operationId": "6b42e2ad9e84edd944ec054552996faf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "description": "The name of this starship. The common name, such as Death Star",
+                                            "type": "string"
+                                        },
+                                        "model": {
+                                            "description": "The model or official name of this starship. Such as T-65 X-wing or DS-1 Orbital Battle Station",
+                                            "type": "string"
+                                        },
+                                        "starship_class": {
+                                            "description": "The class of this starship, such as Starfighter or Deep Space Mobile Battlestation",
+                                            "type": "string"
+                                        },
+                                        "manufacturer": {
+                                            "description": "The manufacturer of this starship. Comma separated if more than one",
+                                            "type": "string"
+                                        },
+                                        "cost_in_credits": {
+                                            "description": "The cost of this starship new, in galactic credits",
+                                            "type": "string"
+                                        },
+                                        "length": {
+                                            "description": "The length of this starship in meters",
+                                            "type": "string"
+                                        },
+                                        "crew": {
+                                            "description": "The number of personnel needed to run or pilot this starship",
+                                            "type": "string"
+                                        },
+                                        "passengers": {
+                                            "description": "The number of non-essential people this starship can transport",
+                                            "type": "string"
+                                        },
+                                        "max_atmosphering_speed": {
+                                            "description": "The maximum speed of this starship in the atmosphere. N/A if this starship is incapable of atmospheric flight",
+                                            "type": "string"
+                                        },
+                                        "hyperdrive_rating": {
+                                            "description": "The class of this starships hyperdrive",
+                                            "type": "string"
+                                        },
+                                        "MGLT": {
+                                            "description": "The Maximum number of Megalights this starship can travel in a standard hour. A Megalight is a standard unit of distance and has never been defined before within the Star Wars universe. This figure is only really useful for measuring the difference in speed of starships. We can assume it is similar to AU, the distance between our Sun (Sol) and Earth",
+                                            "type": "string"
+                                        },
+                                        "cargo_capacity": {
+                                            "description": "The maximum number of kilograms that this starship can transport",
+                                            "type": "string"
+                                        },
+                                        "consumables": {
+                                            "description": "The maximum length of time that this starship can provide consumables for its entire crew without having to resupply",
+                                            "type": "string"
+                                        },
+                                        "films": {
+                                            "description": "An array of Film URL Resources that this vehicle has appeared in",
+                                            "type": "array",
+                                            "items": {
+                                                "description": "Films URLs Resources",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "pilots": {
+                                            "description": "An array of People URL Resources that this vehicle has been piloted by",
+                                            "type": "array",
+                                            "items": {
+                                                "description": "People URLs Resources",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "url": {
+                                            "description": "the hypermedia URL of this resource",
+                                            "type": "string"
+                                        },
+                                        "created": {
+                                            "description": "the ISO 8601 date format of the time that this resource was created",
+                                            "type": "string"
+                                        },
+                                        "edited": {
+                                            "description": "the ISO 8601 date format of the time that this resource was edited",
+                                            "type": "string"
+                                        },
+                                        "count": {
+                                            "description": "Specific quantity of this vehicle",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "detail": {
+                                            "description": "Not match result for {id}",
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/vehicles/count": {
+            "get": {
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Returns a count of specific Vehicle using his ID or name or model.",
+                "description": "A Vehicle resource is a single transport craft that does not have hyperdrive capability.",
+                "operationId": "ed4d936704c49dcd64ba1812342f2b51",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Search by id",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name of vehicle",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "model",
+                        "in": "query",
+                        "description": "model of vehicle",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "description": "The name of this vehicle.",
+                                            "type": "string"
+                                        },
+                                        "model": {
+                                            "description": "The model or official name of this vehicle.",
+                                            "type": "string"
+                                        },
+                                        "count": {
+                                            "description": "Specific quantity of this vehicle",
+                                            "type": "integer"
+                                        },
+                                        "url": {
+                                            "description": "the hypermedia URL of this resource",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "detail": {
+                                            "description": "Not match result for {id}",
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/starships/count": {
+            "get": {
+                "tags": [
+                    "Starships"
+                ],
+                "summary": "Returns a count of specific Starship using his ID or name or model.",
+                "description": "A Starship resource is a single transport craft that has hyperdrive capability.",
+                "operationId": "2306ddd3abbee8f10ba1ed1e6834f4b2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Search by id",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name of starship",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "model",
+                        "in": "query",
+                        "description": "model of starship",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "description": "The name of this starship. The common name, such as Death Star",
+                                            "type": "string"
+                                        },
+                                        "model": {
+                                            "description": "The model or official name of this starship. Such as T-65 X-wing or DS-1 Orbital Battle Station",
+                                            "type": "string"
+                                        },
+                                        "count": {
+                                            "description": "Specific quantity of this vehicle",
+                                            "type": "integer"
+                                        },
+                                        "url": {
+                                            "description": "the hypermedia URL of this resource",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "detail": {
+                                            "description": "Not match result for {id}",
+                                            "type": "string",
+                                            "example": "Not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
